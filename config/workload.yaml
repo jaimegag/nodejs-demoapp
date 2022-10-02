@@ -14,3 +14,8 @@ spec:
     - name: testing_pipeline_matching_labels
       value: 
         apps.tanzu.vmware.com/pipeline: test-node
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/jaimegag/nodejs-demoapp.git
