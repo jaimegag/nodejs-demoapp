@@ -4,6 +4,20 @@ This is a simple Node.js web app using the Express framework and EJS templates.
 
 > NOTE: This repository is a copy of the https://github.com/benc-uk/nodejs-demoapp, created by Ben Coleman (@benc-uk). It has been re-structured and tweaked to facilitate deploying this application in Tanzu Application Platform.
 
+Table of Contents
+- [Application Description](#application-description)
+- [Run in a Docker Container](#run-in-a-docker-container)
+- [Deploy on Kubernetes](#deploy-on-kubernetes)
+- [Deploy on Tanzu Application Platform](#deploy-on-tanzu-application-platform)
+- [Optional Features](#optional-features)
+    - [Application Insights](#application-insights)
+    - [Weather Details](#weather-details)
+    - [User Authentication with Azure AD](#user-authentication-with-azure-ad)
+    - [Todo App](#todo-app)
+- [Configuration](#configuration)
+
+## Application Description
+
 The app has been designed with cloud native demos & containers in mind, in order to provide a real working application for deployment, something more than "hello-world" but with the minimum of pre-reqs. It is not intended as a complete example of a fully functioning architecture or complex software design.
 
 Typical uses would be deployment to Kubernetes, demos of Docker, CI/CD (build pipelines are provided), deployment to cloud (Azure) monitoring, auto-scaling
@@ -21,7 +35,7 @@ The app has several basic pages accessed from the top navigation menu, some of w
 ![screen](https://user-images.githubusercontent.com/14982936/55620045-dfe96480-5791-11e9-94f3-6d788ed447c1.png)
 ![screen](https://user-images.githubusercontent.com/14982936/58764072-d8102b80-855a-11e9-993f-21ef0344d5e0.png)
 
-# Run in a Docker Container
+## Run in a Docker Container
 
 Public container image is [available on GitHub Container Registry](https://github.com/users/benc-uk/packages/container/package/nodejs-demoapp).
 
@@ -33,11 +47,11 @@ docker run --rm -it -p 3000:3000 ghcr.io/benc-uk/nodejs-demoapp:latest
 
 Should you want to build your own container, run `make image` from the `other` folder and the above variables to customise the name & tag.
 
-# Deploy on Kubernetes
+## Deploy on Kubernetes
 
 The app can easily be deployed to Kubernetes using Helm, see [other/deploy/kubernetes/readme.md](other/deploy/kubernetes/readme.md) for details
 
-# Deploy on Tanzu Application Platform
+## Deploy on Tanzu Application Platform
 
 If you are going to use a `supply-chain` with tests you will require to deploy this Tekton Pipeline in advance: `/config/tekton-pipeline-node.yaml`. Notice we force installation of the `prom-client` package hat might not be available in other Pipelines.
 ```shell script
@@ -53,7 +67,7 @@ tanzu apps workload create nodejs-workload \
 
 Use the provided `/config/catalog-info.yaml` to import the application into the TAP-GUI
 
-# Optional Features
+## Optional Features
 
 The app will start up and run with zero configuration, however the only features that will be available will be the INFO and TOOLS views. The following optional features can be enabled:
 
@@ -112,7 +126,7 @@ The default database name is `todoDb` but you can change this by setting `TODO_M
 
 You can stand up MongoDB in a container instance or in Cosmos DB (using the Mongo API). Note. When using Cosmos DB and the _per database provisioned RU/s_ option, you must manually create the collection called `todos` in the relevant database and set the shard key to `_id`
 
-# Configuration
+## Configuration
 
 The following configuration environmental variables are supported, however none are mandatory. These can be set directly or when running locally will be picked up from an `.env` file if it is present. A sample `.env` file called `.env.sample` is provided for you to copy
 
