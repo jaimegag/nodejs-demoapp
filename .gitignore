@@ -9,3 +9,4 @@ secrets.sh
 .secrets
 myparams.json
 .vscode/
+.DS_Store
