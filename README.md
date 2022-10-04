@@ -60,7 +60,7 @@ kubectl apply -f ./config/tekton-pipeline-node.yaml
 
 Use the provided `/config/workload.yaml` to deploy the application into TAP
 ```shell script
-tanzu apps workload create nodejs-workload \
+tanzu apps workload create nodejs-demoapp \
   -f ./config/workload.yaml \
   --yes
 ```
